@@ -1,0 +1,119 @@
+[gd_scene load_steps=10 format=3 uid="uid://c813odfe03g0t"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_n5o1c"]
+[ext_resource type="FontFile" uid="uid://berdly3x322cn" path="res://Sprites/Fonts/Minecraft.ttf" id="2_2aa6b"]
+[ext_resource type="Texture2D" uid="uid://brvupsi1t5ucm" path="res://Sprites/Background/Clouds/Clouds 8/1.png" id="2_uv1kt"]
+[ext_resource type="Texture2D" uid="uid://bpfjstaorbhmw" path="res://Sprites/Background/Clouds/Clouds 8/2.png" id="3_ejgjh"]
+[ext_resource type="Texture2D" uid="uid://bqpe7yuhm05kt" path="res://Sprites/Background/Clouds/Clouds 8/3.png" id="4_od3lm"]
+[ext_resource type="Texture2D" uid="uid://cq0six5coxd8p" path="res://Sprites/Background/Clouds/Clouds 8/4.png" id="5_7lcbs"]
+[ext_resource type="Texture2D" uid="uid://duev4q3362ymy" path="res://Sprites/Background/Clouds/Clouds 8/5.png" id="6_v5vqm"]
+[ext_resource type="Texture2D" uid="uid://bqhwwf74sqo6a" path="res://Sprites/Background/Clouds/Clouds 8/6.png" id="7_ik3bf"]
+[ext_resource type="Texture2D" uid="uid://dj56jaxru7ltg" path="res://Sprites/Main Characters/Nutty/Score.png" id="9_j2fop"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_n5o1c")
+
+[node name="Start" type="Button" parent="."]
+offset_left = 56.0
+offset_top = 208.0
+offset_right = 106.0
+offset_bottom = 255.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_2aa6b")
+theme_override_font_sizes/font_size = 22
+text = "START"
+flat = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+scale = Vector2(0.996236, 1)
+motion_scale = Vector2(0.3, 0.3)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_left = 3.0
+offset_top = -1.0
+offset_right = 579.0
+offset_bottom = 323.0
+texture = ExtResource("2_uv1kt")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 578.0
+offset_bottom = 327.0
+texture = ExtResource("3_ejgjh")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground"]
+offset_left = 2.0
+offset_right = 578.0
+offset_bottom = 324.0
+texture = ExtResource("4_od3lm")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="ParallaxBackground"]
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 572.0
+offset_bottom = 322.0
+texture = ExtResource("5_7lcbs")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect4" type="TextureRect" parent="ParallaxBackground"]
+offset_left = 2.0
+offset_right = 578.0
+offset_bottom = 324.0
+texture = ExtResource("6_v5vqm")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect5" type="TextureRect" parent="ParallaxBackground"]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 578.0
+offset_bottom = 328.0
+texture = ExtResource("7_ik3bf")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="EXIT" type="Button" parent="."]
+offset_left = 368.0
+offset_top = 209.0
+offset_right = 425.0
+offset_bottom = 255.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_2aa6b")
+theme_override_font_sizes/font_size = 22
+text = "EXIT
+"
+flat = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 96.0
+offset_top = 154.0
+offset_right = 400.0
+offset_bottom = 183.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_2aa6b")
+theme_override_font_sizes/font_size = 25
+text = "PEGA BOLA RATASTICO"
+
+[node name="Score" type="Sprite2D" parent="."]
+position = Vector2(347, 141)
+texture = ExtResource("9_j2fop")
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="EXIT" to="." method="_on_exit_pressed"]

@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://chs61k6tbq20c"]
+
+[ext_resource type="Script" path="res://Scripts/Attack.gd" id="1_f4051"]
+[ext_resource type="Texture2D" uid="uid://dpowi45apbm4i" path="res://Sprites/Slime/Argentina/death.png" id="2_lpls5"]
+[ext_resource type="Texture2D" uid="uid://d8bhj7b4efon" path="res://Sprites/Slime/Argentina/idle.png" id="3_3u5mr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j400b"]
+atlas = ExtResource("2_lpls5")
+region = Rect2(0, 0, 13, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nphw"]
+atlas = ExtResource("3_3u5mr")
+region = Rect2(0, 0, 13, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r40im"]
+atlas = ExtResource("3_3u5mr")
+region = Rect2(13, 0, 13, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xikv"]
+atlas = ExtResource("3_3u5mr")
+region = Rect2(26, 0, 13, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw0n7"]
+atlas = ExtResource("3_3u5mr")
+region = Rect2(39, 0, 13, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bvf3p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j400b")
+}],
+"loop": false,
+"name": &"Hit",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nphw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r40im")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xikv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mw0n7")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_euoyh"]
+size = Vector2(12, 18)
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_p28ai"]
+length = 9.00001
+
+[node name="Attack" type="CharacterBody2D" groups=["Attack", "EnemiesText"]]
+script = ExtResource("1_f4051")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bvf3p")
+animation = &"Idle"
+autoplay = "Idle"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_euoyh")
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 3)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.57079
+shape = SubResource("SeparationRayShape2D_p28ai")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+rotation = 4.71238
+shape = SubResource("SeparationRayShape2D_p28ai")
+
+[connection signal="script_changed" from="." to="." method="_on_script_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

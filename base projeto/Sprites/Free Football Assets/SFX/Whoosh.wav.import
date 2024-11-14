@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1js1ac27cnpu"
+path="res://.godot/imported/Whoosh.wav-5e7b0aae66903e9033659ca8a9403a0c.sample"
+
+[deps]
+
+source_file="res://Sprites/Free Football Assets/SFX/Whoosh.wav"
+dest_files=["res://.godot/imported/Whoosh.wav-5e7b0aae66903e9033659ca8a9403a0c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
